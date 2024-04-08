@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import game.GameBean;
 import game.GameBean.GamePlayer;
 
 public class GameServlet extends HttpServlet {
@@ -32,29 +31,29 @@ public class GameServlet extends HttpServlet {
         
         GamePlayer winner = game.getWinner();
         switch(winner){
-            case NOBODY:
+            case NADIE:
                 if(game.hasEmptyCell()){
                     game.playComputerTurn();
                     switch(game.getWinner()){
-                        case NOBODY:
+                        case NADIE:
                             break;
-                        case COMPUTER:
+                        case COMPUTADORA:
                             request.setAttribute("winner", "The computer");
                             break;
-                        case USER:
+                        case USUARIO:
                             request.setAttribute("winner", "You");
                             break;
                     }
                 }
                 break;
-            case COMPUTER:
+            case COMPUTADORA:
                 request.setAttribute("winner", "The computer");
                 break;
-            case USER:
+            case USUARIO:
                 request.setAttribute("winner", "You");
                 break;
         }
-        if(winner == GamePlayer.NOBODY && !game.hasEmptyCell()){
+        if(winner == GamePlayer.NADIE && !game.hasEmptyCell()){
             request.setAttribute("winner", "Nobody");
         }
         request.getRequestDispatcher("/game.jsp").forward(request, response);

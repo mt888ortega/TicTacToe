@@ -12,10 +12,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tic Tac Toe</title>
+       
     </head>
     <body>
         <h1>Tic Tac Toe</h1>
-        <table border="1">
+        <table border="5">
             <c:forEach var="line" items="${gameBean.gridLines}">
             <tr>
                 <c:forEach var="cell" items="${gameBean.getGridStatus(line)}">
@@ -43,9 +44,9 @@
             </c:forEach>
         </table>
         <c:if test="${winner != null}">
-            <h2>${winner} Won!</h1>
+            <h2>${winner} Ganaste!</h1>
             <form action="index.jsp" method="post">
-                <input type="submit" name="Replay" value="Play again"><br/>
+                <input type="submit" name="Replay" value="juega de nuevo"><br/>
             </form>
         </c:if>
     </body>

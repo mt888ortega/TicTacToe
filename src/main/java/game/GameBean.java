@@ -1,20 +1,19 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class GameBean {
-    private static final int GRID_SIZE = 3;
+    private static final int GRID_SIZE = 4;
     
     public enum GameState{
         NULL, O, X;
     }
     public enum GamePlayer{
-        USER(GameState.X),
-        COMPUTER(GameState.O),
-        NOBODY(GameState.NULL);
+        USUARIO(GameState.X),
+        COMPUTADORA(GameState.O),
+        NADIE(GameState.NULL);
         
         private GameState state;
         private GamePlayer(GameState state){
@@ -59,17 +58,17 @@ public class GameBean {
             }
         }
         if(!this.userFirst){
-            this.play(GamePlayer.COMPUTER, 1, 1);
+            this.play(GamePlayer.COMPUTADORA, 1, 1);
         }
     }
     
     public void playPlayerTurn(int line, int col){
-        this.play(GamePlayer.USER, line, col);
+        this.play(GamePlayer.USUARIO, line, col);
     }
     public void playComputerTurn(){
         int line = this.getRandomLineIndexWithEmptyCell();
         int col = this.getRandomEmptyCell(line);
-        this.play(GamePlayer.COMPUTER, line, col);
+        this.play(GamePlayer.COMPUTADORA, line, col);
     }
     private void play(GamePlayer player, int line, int col){
         if(this.gameStatus[line][col] == GameState.NULL){
@@ -134,7 +133,7 @@ public class GameBean {
             return this.getPlayer(nCrossState);
         }
         else{
-            return GamePlayer.NOBODY;
+            return GamePlayer.NADIE;
         }
     }
     
